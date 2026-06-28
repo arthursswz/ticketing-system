@@ -5,6 +5,7 @@ const chamados= [];
 
 //criando o menu com as opções e  variável opcao
 let opcao;
+let i = 0;
 
 do{
     //exibindo menu para o usuário
@@ -35,12 +36,28 @@ do{
             status: "aberto"
 }
 //cadastrando os chamadados novos no meu array de chamados
-chamados.push(chamadosNovos);
-console.log("chamado cadastrado com sucesso");
-console.clear();
-console.log(chamados);
+    console.clear();
+    chamados.push(chamadosNovos);
+    console.log("chamado cadastrado com sucesso");
+    break;
 
-}
+//lista todos os chamados no sistema
+    case "listar":
+        if(chamados.length!=0){
+            for(i=0; i<chamados.length;i++){
+                console.log(`id do chamado ${chamados[i].id}`);
+                console.log(`nome do colaborador: ${chamados[i].nome}`);
+                console.log(`setor do colaborador(a): ${chamados[i].setor}`);
+                console.log(`descrição do problema: ${chamados[i].descricao}`);
+                console.log(`status do chamado: ${chamados[i].status}`);
+            } 
+            } else{
+                console.log("não há nenhum chamado cadastrado no sistema");
+            }
+         break;
+
+ 
+        }
 
 }while(opcao!="sair")
 
