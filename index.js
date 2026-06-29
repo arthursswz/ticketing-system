@@ -5,7 +5,6 @@ const chamados= [];
 
 //criando o menu com as opções e  variável opcao
 let opcao;
-let i = 0;
 
 do{
     //exibindo menu para o usuário
@@ -14,6 +13,8 @@ do{
  console.log("digite criar para cadastrar novos chamados");
  console.log("digite listar para ver os chamados antigos");
  console.log("digite sair para encerrar o programa");
+ console.log("digite buscar para procurar um chamado pelo ID");
+ console.log("digite resolver para finalizar um chamado");
  console.log("----------------------")
 
      //parte lógica do sistema de chamados
@@ -43,23 +44,63 @@ do{
 
 //lista todos os chamados no sistema
     case "listar":
-        if(chamados.length!=0){
-            for(i=0; i<chamados.length;i++){
+        if(chamados.length===0){
+            console.log("não há nenhum chamado cadastrado no sistema");
+            } else {
+                 for(let i=0; i<chamados.length;i++){
                 console.log(`id do chamado ${chamados[i].id}`);
                 console.log(`nome do colaborador: ${chamados[i].nome}`);
                 console.log(`setor do colaborador(a): ${chamados[i].setor}`);
                 console.log(`descrição do problema: ${chamados[i].descricao}`);
                 console.log(`status do chamado: ${chamados[i].status}`);
-            } 
-            } else{
-                console.log("não há nenhum chamado cadastrado no sistema");
-            }
+                }} 
          break;
+//busca todos os chamados no array
+                case "buscar":
+            const buscar = prompt("digite o id do chamado para o sistema realizar a buscar: ");
+            let idb = Number(buscar);
+            //procura no array o id especificado pelo o usuário
+            const achou = chamados.find((chamado) => {
+                 return chamado.id ===idb;
+            });
 
- 
-        }
+            if(achou){
+                console.log("chamado encontrado");
+                console.log(achou);
+            } else{
+                console.log("Chamado não encontrado");
+            }
+              break;
 
-}while(opcao!="sair")
+//procurando no array um chamado
+
+              case "resolver":
+
+            const procurart = prompt("digite o id do chamado: ");
+            let procurar = Number(procurart);
+
+            const resolverChamado = chamados.find((chamado) =>{
+                if(chamado.id ===procurar){
+                      return true
+                }
+            })
+
+             if(resolverChamado){
+                resolverChamado.status = "resolvido";
+                console.log("o chamado foi resolvido com sucesso")
+                console.log(resolverChamado);
+             } else{
+                console.log("o chamado não foi resolvido");
+             }
+             break;
+
+    default:
+        console.log("opção invalida, digite outra");
+        break;
+
+        
+
+}}while(opcao!="sair")
 
 console.log("programa encerrado com sucesso");
 
