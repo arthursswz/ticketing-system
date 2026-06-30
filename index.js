@@ -23,10 +23,18 @@ do{
 
 
    switch(opcao){
+    
      case "criar":
-           const nome = prompt("Nome do colaborador(a): ");
-           const setor = prompt("Qual o seu setor? ");
-           const descricao =prompt("Descrição do problema: ");
+        let nome, setor, descricao;
+       do{ 
+           nome = prompt("Nome do colaborador(a): ");
+            
+           setor = prompt("Qual o seu setor? ");
+          
+           descricao = prompt("Descrição do problema: ");
+           console.clear();
+             
+           }while( nome.trim() === "" || descricao.trim() === "" || setor.trim() === "")
             
 
             const chamadosNovos= {
@@ -43,17 +51,20 @@ do{
     break;
 
 //lista todos os chamados no sistema
+
     case "listar":
+      chamados.forEach((chamado) => { 
         if(chamados.length===0){
             console.log("não há nenhum chamado cadastrado no sistema");
             } else {
-                 for(let i=0; i<chamados.length;i++){
-                console.log(`id do chamado ${chamados[i].id}`);
-                console.log(`nome do colaborador: ${chamados[i].nome}`);
-                console.log(`setor do colaborador(a): ${chamados[i].setor}`);
-                console.log(`descrição do problema: ${chamados[i].descricao}`);
-                console.log(`status do chamado: ${chamados[i].status}`);
-                }} 
+                console.log("----------------------");
+                console.log(`id do chamado ${chamado.id}`);
+                console.log(`nome do colaborador: ${chamado.nome}`);
+                console.log(`setor do colaborador(a): ${chamado.setor}`);
+                console.log(`descrição do problema: ${chamado.descricao}`);
+                console.log(`status do chamado: ${chamado.status}`);
+                console.log("----------------------")
+                 } }) 
          break;
 //busca todos os chamados no array
                 case "buscar":
