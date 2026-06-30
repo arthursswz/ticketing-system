@@ -13,6 +13,7 @@ function menu(){
  console.log("digite sair para encerrar o programa");
  console.log("digite buscar para procurar um chamado pelo ID");
  console.log("digite resolver para finalizar um chamado");
+ console.log("digite excluir para deletar um chamado");
  console.log("----------------------")
 
      //parte lógica do sistema de chamados
@@ -134,6 +135,33 @@ let procurart, procurar;
 
 }
 
+
+function excluirChamado(){
+
+    let idtextecluir, idnumberexcluir
+
+ do{ 
+    idtextecluir = prompt("Digite o id do chamado que você deseja exluir: ")
+    idnumberexcluir = Number(idtextecluir);
+
+    if(idtextecluir.trim() ==="" || isNaN(idnumberexcluir)){
+        console.log("você não preencheu o campo corretamente faça de novo")
+    } else {
+        let index = chamados.findIndex((buscaridparaexcluir) => buscaridparaexcluir.id === idnumberexcluir)
+
+    if(index!= -1){
+        chamados.splice(index, 1);
+        console.log("chamado deletado com sucesso");
+    } else {
+        console.log("chamado não encontrado");
+    }
+
+    }
+     }while(idtextecluir.trim()==="" || isNaN(idnumberexcluir));
+}
+
+
+
 let opcao;
 
 do{
@@ -162,6 +190,10 @@ opcao = menu();
 
             case "resolver":
             resolverChamado();
+            break;
+
+            case "excluir":
+            excluirChamado();
             break;
 
             case "sair":
