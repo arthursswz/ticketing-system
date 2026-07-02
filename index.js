@@ -1,8 +1,40 @@
 const prompt = require('prompt-sync')();
-
+const fs = require("fs");
+const { json } = require('stream/consumers');
 //criado o objeto chamado
-const chamados= [];
+
 //criando o menu com as opções e  variável opcao
+
+
+
+
+function carregarChamados() {
+    const conteudoar = fs.readFileSync("chamados.json", "utf-8");
+    const dados = JSON.parse(conteudoar)
+    return dados
+}
+
+
+const chamados= carregarChamados();
+
+function salvarChamados(chamados){
+
+    const dadosEmJson = JSON.stringify(chamados, null, 2);
+     fs.writeFileSync("chamados.json", dadosEmJson, "utf-8");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function menu(){ 
   //exibindo menu para o usuário
@@ -53,7 +85,8 @@ function menu(){
 }
 //cadastrando os chamadados novos no meu array de chamados
     console.clear();
-    chamados.push(chamadoNovo);
+    chamados.push(chamadoNovo)
+    salvarChamados(chamados)
     console.log("chamado cadastrado com sucesso");
  }
 
@@ -151,6 +184,7 @@ function excluirChamado(){
 
     if(index!= -1){
         chamados.splice(index, 1);
+        salvarChamados(chamados);
         console.log("chamado deletado com sucesso");
     } else {
         console.log("chamado não encontrado");

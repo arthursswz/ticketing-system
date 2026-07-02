@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome": "a",
+    "setor": "b",
+    "descricao": "c",
+    "status": "aberto"
+  },
+  {
+    "id": 2,
+    "nome": "consegui",
+    "setor": "criar",
+    "descricao": "e conectar com os chamados json",
+    "status": "aberto"
+  }
+]
