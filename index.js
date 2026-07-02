@@ -1,37 +1,15 @@
 const prompt = require('prompt-sync')();
 const fs = require("fs");
 const { json } = require('stream/consumers');
-//criado o objeto chamado
+const {carregarChamados, salvarChamados} = require("./utils/storage")
 
 //criando o menu com as opções e  variável opcao
 
 
 
 
-function carregarChamados() {
-    const conteudoar = fs.readFileSync("chamados.json", "utf-8");
-    const dados = JSON.parse(conteudoar)
-    return dados
-}
-
 
 const chamados= carregarChamados();
-
-function salvarChamados(chamados){
-
-    const dadosEmJson = JSON.stringify(chamados, null, 2);
-     fs.writeFileSync("chamados.json", dadosEmJson, "utf-8");
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
