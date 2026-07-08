@@ -1,8 +1,7 @@
 const prompt = require('prompt-sync')();
-const fs = require("fs");
-const { json } = require('stream/consumers');
-const {carregarChamados, salvarChamados} = require("./utils/storage");
+const { carregarChamados, salvarChamados } = require("./utils/storage");
 const { gerarNovoid, buscarChamadoporId } = require('./services/chamadosService');
+
 
 //criando o menu com as opções e  variável opcao
 const chamados= carregarChamados();
@@ -117,20 +116,15 @@ let procurart, procurar;
                     }
                  } while(procurart.trim() === "" || isNaN(procurar)  );
 
-
-//procura os chamados no array
-            const buscarchama = chamados.find((chamado) =>{
-                if(chamado.id ===procurar){
-                      return true
-                }
-            })
+  const buscarChama = buscarChamadoporId(chamados, procurar);
 
 //altera o status do chamado
 
-             if(buscarchama){
-                buscarchama.status = "resolvido";
+             if(buscarChama){
+                buscarChama.status = "resolvido";
+                salvarChamados(chamados)
                 console.log("o chamado foi resolvido com sucesso")
-                console.log(buscarchama);
+                console.log(buscarChama);
              } else{
                 console.log("o chamado não foi resolvido");
              }
