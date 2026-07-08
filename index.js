@@ -1,17 +1,11 @@
 const prompt = require('prompt-sync')();
 const fs = require("fs");
 const { json } = require('stream/consumers');
-const {carregarChamados, salvarChamados} = require("./utils/storage")
+const {carregarChamados, salvarChamados} = require("./utils/storage");
+const { gerarNovoid, buscarChamadoporId } = require('./services/chamadosService');
 
 //criando o menu com as opções e  variável opcao
-
-
-
-
-
 const chamados= carregarChamados();
-
-
 
 
 function menu(){ 
@@ -55,7 +49,7 @@ function menu(){
             
 
             const chamadoNovo= {
-            id:chamados.length +1,
+            id:gerarNovoid(chamados),
             nome:nome,
             setor:setor,
             descricao: descricao,
@@ -98,10 +92,7 @@ let buscar, idb
 
         }while(buscar.trim()===""  || isNaN(idb));
 
-            //procura no array o id especificado pelo o usuário
-            const achou = chamados.find((chamado) => {
-                 return chamado.id ===idb;
-            });
+         const achou = buscarChamadoporId(chamados, idb);
 
             if(achou){
                 console.log("chamado encontrado");
