@@ -138,10 +138,8 @@ function excluirChamado(){
 
         let index = deletarChamadoporid(chamados,idnumberexcluir);
 
-    if(index=-1){
-        chamados.splice(index, 1);
-        salvarChamados(chamados);
-        console.log("chamado deletado com sucesso");
+    if(index){
+        console.log("chamado deletado com sucesso")
     } else {
         console.log("chamado não encontrado");
     }

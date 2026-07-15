@@ -50,7 +50,15 @@ function resolverChamadosPorId(chamados, idb) {
 //função responsável por deletar chamados
 function deletarChamadoporid(chamados, idb) {
   const buscaChamado = chamados.findIndex((buscaridparaexcluir) => buscaridparaexcluir.id === idb)
-  return buscaChamado
+
+    if(buscaChamado!=-1){
+        chamados.splice(buscaChamado, 1);
+        salvarChamados(chamados);
+        return true
+    } else {
+        return false
+    }
+
 }
 
 

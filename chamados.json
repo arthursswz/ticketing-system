@@ -33,12 +33,5 @@
     "setor": "b",
     "descricao": "c",
     "status": "resolvido"
-  },
-  {
-    "id": 8,
-    "nome": "a",
-    "setor": "2",
-    "descricao": "4",
-    "status": "aberto"
   }
 ]
