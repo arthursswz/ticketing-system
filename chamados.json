@@ -7,24 +7,10 @@
     "status": "aberto"
   },
   {
-    "id": 2,
-    "nome": "consegui",
-    "setor": "criar",
-    "descricao": "e conectar com os chamados json",
-    "status": "aberto"
-  },
-  {
     "id": 3,
     "nome": "juao",
     "setor": "muitissimo",
     "descricao": "sei la",
-    "status": "aberto"
-  },
-  {
-    "id": 5,
-    "nome": "Sander ",
-    "setor": "clt",
-    "descricao": "muitas rodas",
     "status": "aberto"
   },
   {
@@ -39,7 +25,7 @@
     "nome": "muitos",
     "setor": "do paozin",
     "descricao": "m",
-    "status": "aberto"
+    "status": "resolvido"
   },
   {
     "id": 7,

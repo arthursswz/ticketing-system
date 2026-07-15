@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
 const { carregarChamados, salvarChamados } = require("./utils/storage");
-const { gerarNovoid, buscarChamadoporId } = require('./services/chamadosService');
+const { gerarNovoid, buscarChamadoporId, resolverChamadosPorId, deletarChamadoporid} = require('./services/chamadosService');
 
 
 //criando o menu com as opções e  variável opcao
@@ -116,12 +116,11 @@ let procurart, procurar;
                     }
                  } while(procurart.trim() === "" || isNaN(procurar)  );
 
-  const buscarChama = buscarChamadoporId(chamados, procurar);
+  const buscarChama = resolverChamadosPorId(chamados, procurar);
 
 //altera o status do chamado
 
-             if(buscarChama){
-                buscarChama.status = "resolvido";
+             if(buscarChama){ 
                 salvarChamados(chamados)
                 console.log("o chamado foi resolvido com sucesso")
                 console.log(buscarChama);
@@ -137,15 +136,16 @@ function excluirChamado(){
     let idtextecluir, idnumberexcluir
 
  do{ 
+
     idtextecluir = prompt("Digite o id do chamado que você deseja exluir: ")
     idnumberexcluir = Number(idtextecluir);
-
-    if(idtextecluir.trim() ==="" || isNaN(idnumberexcluir)){
+      if(idtextecluir.trim() ==="" || isNaN(idnumberexcluir)){
         console.log("você não preencheu o campo corretamente faça de novo")
-    } else {
-        let index = chamados.findIndex((buscaridparaexcluir) => buscaridparaexcluir.id === idnumberexcluir)
+     } }while(idtextecluir.trim()==="" || isNaN(idnumberexcluir));
 
-    if(index!= -1){
+        let index = deletarChamadoporid(chamados,idnumberexcluir);
+
+    if(index){
         chamados.splice(index, 1);
         salvarChamados(chamados);
         console.log("chamado deletado com sucesso");
@@ -154,8 +154,6 @@ function excluirChamado(){
     }
 
     }
-     }while(idtextecluir.trim()==="" || isNaN(idnumberexcluir));
-}
 
 
 
