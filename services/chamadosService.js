@@ -1,3 +1,18 @@
+const { salvarChamados } = require("../utils/storage");
+
+function criarChamado2(chamados,nome,setor, descricao) {
+   const  chamadoNovo = {
+     id:gerarNovoid(chamados),
+        nome:nome,
+            setor:setor,
+                descricao: descricao,
+                  status: "aberto"
+   }
+  chamados.push(chamadoNovo);
+  salvarChamados(chamados);
+
+}
+
 function gerarNovoid (chamados){
    if(chamados.length === 0){
        return 1;
@@ -32,7 +47,7 @@ function resolverChamadosPorId(chamados, idb) {
     return chamadoEncontrado;
 }
 
-
+//função responsável por deletar chamados
 function deletarChamadoporid(chamados, idb) {
   const buscaChamado = chamados.findIndex((buscaridparaexcluir) => buscaridparaexcluir.id === idb)
   return buscaChamado
@@ -43,6 +58,7 @@ function deletarChamadoporid(chamados, idb) {
 
 
  module.exports = {
+    criarChamado2,
     gerarNovoid,
     buscarChamadoporId,
     resolverChamadosPorId,

@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
 const { carregarChamados, salvarChamados } = require("./utils/storage");
-const { gerarNovoid, buscarChamadoporId, resolverChamadosPorId, deletarChamadoporid} = require('./services/chamadosService');
+const { criarChamado2, gerarNovoid, buscarChamadoporId, resolverChamadosPorId, deletarChamadoporid} = require('./services/chamadosService');
 
 
 //criando o menu com as opções e  variável opcao
@@ -26,7 +26,7 @@ function menu(){
  }
 
 
-
+//responsável por salvar chamado no array
  function criarChamado(){
 
     let nome, setor, descricao;
@@ -47,17 +47,10 @@ function menu(){
            }while( nome.trim() === "" || descricao.trim() === "" || setor.trim() === "")
             
 
-            const chamadoNovo= {
-            id:gerarNovoid(chamados),
-            nome:nome,
-            setor:setor,
-            descricao: descricao,
-            status: "aberto"
-}
+ 
 //cadastrando os chamadados novos no meu array de chamados
     console.clear();
-    chamados.push(chamadoNovo)
-    salvarChamados(chamados)
+     criarChamado2(chamados, nome, setor, descricao);
     console.log("chamado cadastrado com sucesso");
  }
 
@@ -145,7 +138,7 @@ function excluirChamado(){
 
         let index = deletarChamadoporid(chamados,idnumberexcluir);
 
-    if(index){
+    if(index=-1){
         chamados.splice(index, 1);
         salvarChamados(chamados);
         console.log("chamado deletado com sucesso");
