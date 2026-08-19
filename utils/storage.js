@@ -1,21 +1,32 @@
 const fs = require("fs");
+const caminho = require("path");
+
+const caminhoArquivo = caminho.join(
+    __dirname,
+    "..",
+    "data",
+    "chamados.json"
+);
+
+console.log("Local do storage:", __dirname);
+console.log("Local do json:", caminhoArquivo);
 
 function carregarChamados() {
 
 try { 
 
-    if (!fs.existsSync("chamados.json")) {
-            fs.writeFileSync("chamados.json", "[]", "utf-8");
+    if (!fs.existsSync(caminhoArquivo)) {
+            fs.writeFileSync(caminhoArquivo, "[]", "utf-8");
             return [];
         }
 
-        const conteudoar = fs.readFileSync("chamados.json", "utf-8");
+        const conteudoarquivo = fs.readFileSync(caminhoArquivo, "utf-8");
 
-        if (conteudoar.trim() === "") {
+        if (conteudoarquivo.trim() === "") {
             return [];
         }
 
-        const dados = JSON.parse(conteudoar);
+        const dados = JSON.parse(conteudoarquivo);
         return dados;
 
  } catch(erro){
@@ -26,7 +37,7 @@ try {
 
 function salvarChamados(chamados) {
     const dadosEmJson = JSON.stringify(chamados, null, 2);
-    fs.writeFileSync("chamados.json", dadosEmJson, "utf-8");
+    fs.writeFileSync(caminhoArquivo, dadosEmJson, "utf-8");
 }
 
 

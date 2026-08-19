@@ -1,0 +1,3 @@
+#Files  must be ignored
+node_modules
+chamados.json
