@@ -2,20 +2,32 @@ const { salvarChamados } = require("../utils/storage");
 
 function criarChamado2(chamados,nome,setor, descricao) {
 
-  if(
-    nome.trim() === "" || 
-    setor.trim()===""|| 
-    descricao.trim() ==="" ){
-     return undefined;
-   }
+//responsável por normalizar o texto
+const nomenormalizado = nome.trim();
+const setornormalizado = setor.trim();
+const descricaonormalizada = descricao.trim();
 
-   const  chamadoNovo = {
-     id:gerarNovoid(chamados),
-        nome:nome,
-            setor:setor,
-                descricao: descricao,
-                  status: "aberto"
-   }
+
+if(
+  nomenormalizado.trim() === "" || 
+  setornormalizado.trim()===""|| 
+  descricaonormalizada.trim() ==="" ){
+   return undefined;
+ }
+
+
+
+//guarda os dados no objeto chamado novo
+
+const  chamadoNovo = {
+  id:gerarNovoid(chamados),
+     nome:nomenormalizado,
+         setor:setornormalizado,
+             descricao: descricaonormalizada,
+               status: "aberto"
+}
+
+
 //momento em que o o chamado é colocado no array
   chamados.push(chamadoNovo);
 //array salvo no arquivo json
