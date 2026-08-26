@@ -1,6 +1,14 @@
 const { salvarChamados } = require("../utils/storage");
 
 function criarChamado2(chamados,nome,setor, descricao) {
+
+  if(
+    nome.trim() === "" || 
+    setor.trim()===""|| 
+    descricao.trim() ==="" ){
+     return undefined;
+   }
+
    const  chamadoNovo = {
      id:gerarNovoid(chamados),
         nome:nome,
@@ -8,8 +16,12 @@ function criarChamado2(chamados,nome,setor, descricao) {
                 descricao: descricao,
                   status: "aberto"
    }
+//momento em que o o chamado é colocado no array
   chamados.push(chamadoNovo);
+//array salvo no arquivo json
   salvarChamados(chamados);
+
+  return chamadoNovo;
 
 }
 

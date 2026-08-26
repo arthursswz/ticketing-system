@@ -27,31 +27,29 @@ function menu(){
 
 
 //responsável por salvar chamado no array
- function criarChamado(){
+    function criarChamado(){
 
-    let nome, setor, descricao;
+        let nome, setor, descricao;
 
-       do{ 
-           nome = prompt("Nome do colaborador(a): ");
+        
+            nome = prompt("Nome do colaborador(a): ");
+                
+            setor = prompt("Qual o seu setor? ");
             
-           setor = prompt("Qual o seu setor? ");
-          
-           descricao = prompt("Descrição do problema: ");
-           console.clear();
-           //exibindo mensagem caso algum camapo esteja vazio
+            descricao = prompt("Descrição do problema: ");
+            console.clear();
+            //exibindo mensagem caso algum camapo esteja vazio       
 
-           if( nome.trim() === "" || descricao.trim() === "" || setor.trim() === ""){
-            console.log("Algum campo foi preenchido incorretamente. Preencha todos os dados novamente.");
-           }
-             
-           }while( nome.trim() === "" || descricao.trim() === "" || setor.trim() === "")
-            
-
- 
-//cadastrando os chamadados novos no meu array de chamados
-    console.clear();
-     criarChamado2(chamados, nome, setor, descricao);
-    console.log("chamado cadastrado com sucesso");
+    
+    //cadastrando os chamadados novos no meu array de chamados
+        console.clear();
+        const resultCh= criarChamado2(chamados, nome, setor, descricao);
+        if(resultCh!==undefined){
+            console.log("chamado cadastrado com sucesso");
+            console.log(resultCh);
+        } else {
+            console.log("você preencheu algum campo incorretamente, faça novamente");
+        }
  }
 
  function listarChamado (){
