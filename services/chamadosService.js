@@ -1,4 +1,4 @@
-const { salvarChamados } = require("../utils/storage");
+const { salvarChamados, carregarChamados } = require("../utils/storage");
 
 function criarChamado2(chamados,nome,setor, descricao) {
 
@@ -85,6 +85,10 @@ function deletarChamadoporid(chamados, idb) {
 
 }
 
+ function retornaChamadosServidor(){
+           return carregarChamados();
+}
+
 
 
 
@@ -94,5 +98,6 @@ function deletarChamadoporid(chamados, idb) {
     gerarNovoid,
     buscarChamadoporId,
     resolverChamadosPorId,
-    deletarChamadoporid
+    deletarChamadoporid,
+    retornaChamadosServidor,
  };

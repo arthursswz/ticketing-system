@@ -4,7 +4,8 @@ const { criarChamado2, gerarNovoid, buscarChamadoporId, resolverChamadosPorId, d
 
 
 //criando o menu com as opções e  variável opcao
-const chamados= carregarChamados();
+const chamados= carregarChamados(); 
+
 
 
 function menu(){ 
